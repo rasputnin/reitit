@@ -22,7 +22,8 @@
                          [metosin/spec-tools "0.7.0"]
                          [metosin/schema-tools "0.10.3"]
                          [metosin/ring-swagger-ui "2.2.10"]
-                         [metosin/jsonista "0.2.1"]]
+                         [metosin/jsonista "0.2.1"]
+                         [re-frame "0.10.2"]]
 
   :plugins [[jonase/eastwood "0.2.6"]
             [lein-doo "0.1.10"]
