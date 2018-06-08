@@ -1,41 +1,38 @@
 (ns reitit.re-frame
-  (:require [re-frame.core :as re :refer [dispatch]]
-            [reitit.frontend :as reitit-frontend]
-            [reitit.core :as reitit]))
+  (:require [re-frame.core :as re]
+            [reitit.frontend :as reitit-frontend]))
 
-(re/reg-event-db ::hash-change
-  (fn [db _]
-    (let [match (reitit-frontend/hash-change (:router (::routes db)) (reitit-frontend/get-hash))]
-      (assoc db ::routes (assoc (::routes db)
-                                :match match
-                                :controllers (if (:enable-controllers? (::routes db))
-                                               (reitit-frontend/apply-controllers (:controllers (::routes db)) match)
-                                               (:controllers (::routes db))))))))
-
-;; Enables controllers (when used the first time)
-;; and applies the changes.
-(re/reg-event-db :routes/apply-controllers
-  (fn [db _]
+(re/reg-event-db ::navigate
+  (fn [db [_ match]]
     (assoc db ::routes (assoc (::routes db)
-                              :controllers (reitit-frontend/apply-controllers (:controllers (::routes db)) (:match (::routes db)))
-                              :enable-controllers? true))))
+                              :match match
+                              :controllers (reitit-frontend/apply-controllers (:controllers (::routes db)) match)))))
 
-;; Options can enable-controllers right away. Should default be enabled or disabled?
-(re/reg-event-fx :routes/init
-  (fn [{:keys [db]} [_ router options]]
-    ;; TODO: This is tied to onhashchange
-    ;; What is user wants to use HTML5 History?
-    (set! js/window.onhashchange #(dispatch [::hash-change]))
-    {:db (assoc db ::routes (merge {:router router
-                                    :match nil
-                                    :controllers []
-                                    :enable-controllers? false}
-                                   options))
-     :dispatch [::hash-change]}))
+(re/reg-event-db :routes/init
+  (fn [db [_ router options]]
+    (when (::routes db)
+      (reitit-frontend/stop! (::routes db)))
+
+    (assoc db ::routes (assoc (reitit-frontend/start! router #(re/dispatch [::navigate %]) options)
+                              :match nil
+                              :controllers []))))
+
+;;
+;; Internal subscriptions
+;;
 
 (re/reg-sub ::state
   (fn [db]
     (::routes db)))
+
+(re/reg-sub ::router
+  :<- [::state]
+  (fn [state]
+    (:router state)))
+
+;;
+;; Public subscriptions
+;;
 
 (re/reg-sub :routes/match
   :<- [::state]
@@ -47,46 +44,30 @@
   (fn [match _]
     (:data match)))
 
-(re/reg-sub :routes/router
-  :<- [::state]
-  (fn [state]
-    (:router state)))
-
 (re/reg-sub :routes/match-by-name
-  :<- [:routes/router]
+  :<- [::router]
   (fn [router [_ k params]]
-    (if router
-      (reitit/match-by-name router k params)
-      ::not-initialized)))
+    (reitit-frontend/match-by-name router k params)))
+
+;; FIXME: re-run if anything changes, because needs history for path-prefix etc.?
+(re/reg-sub :routes/href
+  :<- [::state]
+  (fn [state [_ k params]]
+    (if state
+      (reitit-frontend/href state k params))))
 
 (defn routed-view
   "Renders the current view component.
 
   Current view component is the :view from last :controllers entry with :view set."
   []
-  (let [view @(re/subscribe [:routes/match])
-        ;; Select downmost controller that has view component
-        controller (first (filter :view (reverse (:controllers (:data view)))))]
-    (if-let [f (:view controller)]
+  (let [{:keys [data params] :as match} @(re/subscribe [:routes/match])
+        {:keys [name view]} data]
+    (if view
       ;; NOTE: View component is passed the complete params map, not just the controllers params
       ;; :routes/match doesn't know about controller params
-      [f (:params view)]
-      [:div "No view component defined for route: " (:name (:data view))])))
-
-;;
-;; Utils to create hrefs and change URI
-;;
-
-(re/reg-sub :routes/href
-  (fn [[_ name params :as p]]
-    (re/subscribe [:routes/match-by-name name params]))
-  (fn [match [_ name params]]
-    ;; FIXME: query string
-    ;; if last is map? -> append query string
-    (if-let [path (:path match)]
-      (str "#" path)
-      (if (not= ::not-initialized match)
-        (js/console.error "Can't create URL for route " (pr-str name) (pr-str params))))))
+      [view params]
+      [:div "No view component defined for route: " name])))
 
 (defn href
   "Returns href (including #) for given route name and parameters."
@@ -94,17 +75,11 @@
   ([name params]
    @(re/subscribe [:routes/href name params])))
 
-(defn update-uri!
-  "Creates hash using given name and parameters and changes to browser hash."
-  ([name]
-   (update-uri! name nil))
-  ([name params]
-   (set! js/window.location.hash (href name params))))
-
 (re/reg-fx :update-uri
-  (fn [v]
-    (if v
-      (apply update-uri! v))))
+  (fn [[k params]]
+    (if k
+      (let [this @(re/subscribe [::state])]
+        (reitit-frontend/replace-token this k params)))))
 
 (re/reg-event-fx :routes/update-uri
   (fn [_ [_ & v]]

@@ -16,6 +16,8 @@
                          [metosin/reitit-schema "0.1.2"]
                          [metosin/reitit-swagger "0.1.2"]
                          [metosin/reitit-swagger-ui "0.1.2"]
+                         [metosin/reitit-frontend "0.1.2"]
+                         [metosin/reitit-re-frame "0.1.2"]
 
                          [meta-merge "1.0.0"]
                          [ring/ring-core "1.6.3"]
@@ -41,7 +43,9 @@
                                   "modules/reitit-spec/src"
                                   "modules/reitit-schema/src"
                                   "modules/reitit-swagger/src"
-                                  "modules/reitit-swagger-ui/src"]
+                                  "modules/reitit-swagger-ui/src"
+                                  "modules/reitit-frontend/src"
+                                  "modules/reitit-re-frame/src"]
 
                    :dependencies [[org.clojure/clojure "1.9.0"]
                                   [org.clojure/clojurescript "1.10.238"]
@@ -61,7 +65,10 @@
                                   [criterium "0.4.4"]
                                   [org.clojure/test.check "0.9.0"]
                                   [org.clojure/tools.namespace "0.2.11"]
-                                  [com.gfredericks/test.chuck "0.2.9"]]}
+                                  [com.gfredericks/test.chuck "0.2.9"]
+
+                                  ;; https://github.com/bensu/doo/issues/180
+                                  [fipp "0.6.12"]]}
              :perf {:jvm-opts ^:replace ["-server"
                                          "-Xmx4096m"
                                          "-Dclojure.compiler.direct-linking=true"]

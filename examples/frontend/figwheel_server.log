@@ -1,0 +1,337 @@
+Compiling build :app to "target/cljsbuild/public/js/app.js" from ["src"]...
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:35  column:4  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m31[0m  [36m      {:name ::about[0m
+  [36m32[0m  [36m       :view about-page}]]))[0m
+  [36m33[0m  [36m[0m
+  [36m34[0m  [36m(defn mount-root [][0m
+  [33m35[0m  [1m  (reagent/render [current-page] (.getElementById js/document "app")))[0m
+  [0m  [0m  [33m   ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m(defn init! [][0m
+  [36m38[0m  [36m  (reset! router (rfh/start! routes (fn [m] (reset! match m))))[0m
+  [36m39[0m  [36m  (mount-root))[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:35  column:4  ----[0m
+
+  [1mUse of undeclared Var reagent/render[0m
+
+  [36m31[0m  [36m      {:name ::about[0m
+  [36m32[0m  [36m       :view about-page}]]))[0m
+  [36m33[0m  [36m[0m
+  [36m34[0m  [36m(defn mount-root [][0m
+  [33m35[0m  [1m  (reagent/render [current-page] (.getElementById js/document "app")))[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var reagent/render[0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m(defn init! [][0m
+  [36m38[0m  [36m  (reset! router (rfh/start! routes (fn [m] (reset! match m))))[0m
+  [36m39[0m  [36m  (mount-root))[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:38  column:18  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/start![0m
+
+  [36m34[0m  [36m(defn mount-root [][0m
+  [36m35[0m  [36m  (reagent/render [current-page] (.getElementById js/document "app")))[0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m(defn init! [][0m
+  [33m38[0m  [1m  (reset! router (rfh/start! routes (fn [m] (reset! match m))))[0m
+  [0m  [0m  [33m                 ^--- Wrong number of args (2) passed to reitit.frontend.history/start![0m
+  [36m39[0m  [36m  (mount-root))[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[32mSuccessfully compiled build :app to "target/cljsbuild/public/js/app.js" in 0.642 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/frontend/core.js
+Compiling build :app to "target/cljsbuild/public/js/app.js" from ["src"]...
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:12  column:21  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/href[0m
+
+  [36m 8[0m  [36m(def router (atom nil))[0m
+  [36m 9[0m  [36m[0m
+  [36m10[0m  [36m(defn home-page [][0m
+  [36m11[0m  [36m  [:div [:h2 "Welcome to frontend"][0m
+  [33m12[0m  [1m   [:div [:a {:href (rfh/href @router ::about)} "go to about page"]]])[0m
+  [0m  [0m  [33m                    ^--- Wrong number of args (2) passed to reitit.frontend.history/href[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn about-page [][0m
+  [36m15[0m  [36m  [:div [:h2 "About frontend"][0m
+  [36m16[0m  [36m   [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:16  column:21  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/href[0m
+
+  [36m12[0m  [36m   [:div [:a {:href (rfh/href @router ::about)} "go to about page"]]])[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn about-page [][0m
+  [36m15[0m  [36m  [:div [:h2 "About frontend"][0m
+  [33m16[0m  [1m   [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])[0m
+  [0m  [0m  [33m                    ^--- Wrong number of args (2) passed to reitit.frontend.history/href[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m(defonce match (atom nil))[0m
+  [36m19[0m  [36m[0m
+  [36m20[0m  [36m(defn current-page [][0m
+  [36m21[0m  [36m  (if @match[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:35  column:4  ----[0m
+
+  [1mNo such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+
+  [36m31[0m  [36m      {:name ::about[0m
+  [36m32[0m  [36m       :view about-page}]]))[0m
+  [36m33[0m  [36m[0m
+  [36m34[0m  [36m(defn mount-root [][0m
+  [33m35[0m  [1m  (reagent/render [current-page] (.getElementById js/document "app")))[0m
+  [0m  [0m  [33m   ^--- No such namespace: reagent, could not locate reagent.cljs, reagent.cljc, or JavaScript source providing "reagent"[0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m(defn init! [][0m
+  [36m38[0m  [36m  (reset! router (rfh/start! routes (fn [m] (reset! match m))))[0m
+  [36m39[0m  [36m  (mount-root))[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:35  column:4  ----[0m
+
+  [1mUse of undeclared Var reagent/render[0m
+
+  [36m31[0m  [36m      {:name ::about[0m
+  [36m32[0m  [36m       :view about-page}]]))[0m
+  [36m33[0m  [36m[0m
+  [36m34[0m  [36m(defn mount-root [][0m
+  [33m35[0m  [1m  (reagent/render [current-page] (.getElementById js/document "app")))[0m
+  [0m  [0m  [33m   ^--- Use of undeclared Var reagent/render[0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m(defn init! [][0m
+  [36m38[0m  [36m  (reset! router (rfh/start! routes (fn [m] (reset! match m))))[0m
+  [36m39[0m  [36m  (mount-root))[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:38  column:18  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/start![0m
+
+  [36m34[0m  [36m(defn mount-root [][0m
+  [36m35[0m  [36m  (reagent/render [current-page] (.getElementById js/document "app")))[0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m(defn init! [][0m
+  [33m38[0m  [1m  (reset! router (rfh/start! routes (fn [m] (reset! match m))))[0m
+  [0m  [0m  [33m                 ^--- Wrong number of args (2) passed to reitit.frontend.history/start![0m
+  [36m39[0m  [36m  (mount-root))[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[32mSuccessfully compiled build :app to "target/cljsbuild/public/js/app.js" in 0.527 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/frontend/core.js
+Compiling build :app to "target/cljsbuild/public/js/app.js" from ["src"]...
+[32mSuccessfully compiled build :app to "target/cljsbuild/public/js/app.js" in 0.357 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/frontend/core.js
+Compiling build :app to "target/cljsbuild/public/js/app.js" from ["src"]...
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:12  column:21  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/href[0m
+
+  [36m 8[0m  [36m(def router (atom nil))[0m
+  [36m 9[0m  [36m[0m
+  [36m10[0m  [36m(defn home-page [][0m
+  [36m11[0m  [36m  [:div [:h2 "Welcome to frontend"][0m
+  [33m12[0m  [1m   [:div [:a {:href (rfh/href @router ::about)} "go to about page"]]])[0m
+  [0m  [0m  [33m                    ^--- Wrong number of args (2) passed to reitit.frontend.history/href[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn about-page [][0m
+  [36m15[0m  [36m  [:div [:h2 "About frontend"][0m
+  [36m16[0m  [36m   [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:16  column:21  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/href[0m
+
+  [36m12[0m  [36m   [:div [:a {:href (rfh/href @router ::about)} "go to about page"]]])[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn about-page [][0m
+  [36m15[0m  [36m  [:div [:h2 "About frontend"][0m
+  [33m16[0m  [1m   [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])[0m
+  [0m  [0m  [33m                    ^--- Wrong number of args (2) passed to reitit.frontend.history/href[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m(defonce match (atom nil))[0m
+  [36m19[0m  [36m[0m
+  [36m20[0m  [36m(defn current-page [][0m
+  [36m21[0m  [36m  (if @match[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:38  column:18  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/start![0m
+
+  [36m34[0m  [36m(defn mount-root [][0m
+  [36m35[0m  [36m  (r/render [current-page] (.getElementById js/document "app")))[0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m(defn init! [][0m
+  [33m38[0m  [1m  (reset! router (rfh/start! routes (fn [m] (reset! match m))))[0m
+  [0m  [0m  [33m                 ^--- Wrong number of args (2) passed to reitit.frontend.history/start![0m
+  [36m39[0m  [36m  (mount-root))[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[32mSuccessfully compiled build :app to "target/cljsbuild/public/js/app.js" in 0.503 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/frontend/core.js
+Compiling build :app to "target/cljsbuild/public/js/app.js" from ["src"]...
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:12  column:21  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/href[0m
+
+  [36m 8[0m  [36m(def router (atom nil))[0m
+  [36m 9[0m  [36m[0m
+  [36m10[0m  [36m(defn home-page [][0m
+  [36m11[0m  [36m  [:div [:h2 "Welcome to frontend"][0m
+  [33m12[0m  [1m   [:div [:a {:href (rfh/href @router ::about)} "go to about page"]]])[0m
+  [0m  [0m  [33m                    ^--- Wrong number of args (2) passed to reitit.frontend.history/href[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn about-page [][0m
+  [36m15[0m  [36m  [:div [:h2 "About frontend"][0m
+  [36m16[0m  [36m   [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:16  column:21  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/href[0m
+
+  [36m12[0m  [36m   [:div [:a {:href (rfh/href @router ::about)} "go to about page"]]])[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn about-page [][0m
+  [36m15[0m  [36m  [:div [:h2 "About frontend"][0m
+  [33m16[0m  [1m   [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])[0m
+  [0m  [0m  [33m                    ^--- Wrong number of args (2) passed to reitit.frontend.history/href[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m(defonce match (atom nil))[0m
+  [36m19[0m  [36m[0m
+  [36m20[0m  [36m(defn current-page [][0m
+  [36m21[0m  [36m  (if @match[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:38  column:18  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/start![0m
+
+  [36m34[0m  [36m(defn mount-root [][0m
+  [36m35[0m  [36m  (r/render [current-page] (.getElementById js/document "app")))[0m
+  [36m36[0m  [36m[0m
+  [36m37[0m  [36m(defn init! [][0m
+  [33m38[0m  [1m  (reset! router (rfh/start! routes (fn [m] (reset! match m))))[0m
+  [0m  [0m  [33m                 ^--- Wrong number of args (2) passed to reitit.frontend.history/start![0m
+  [36m39[0m  [36m  (mount-root))[0m
+  [36m40[0m  [36m[0m
+  [36m41[0m  [36m(init!)[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[32mSuccessfully compiled build :app to "target/cljsbuild/public/js/app.js" in 2.895 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/frontend/core.js
+Compiling build :app to "target/cljsbuild/public/js/app.js" from ["src"]...
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:12  column:21  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/href[0m
+
+  [36m 8[0m  [36m(def router (atom nil))[0m
+  [36m 9[0m  [36m[0m
+  [36m10[0m  [36m(defn home-page [][0m
+  [36m11[0m  [36m  [:div [:h2 "Welcome to frontend"][0m
+  [33m12[0m  [1m   [:div [:a {:href (rfh/href @router ::about)} "go to about page"]]])[0m
+  [0m  [0m  [33m                    ^--- Wrong number of args (2) passed to reitit.frontend.history/href[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn about-page [][0m
+  [36m15[0m  [36m  [:div [:h2 "About frontend"][0m
+  [36m16[0m  [36m   [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:16  column:21  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/href[0m
+
+  [36m12[0m  [36m   [:div [:a {:href (rfh/href @router ::about)} "go to about page"]]])[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn about-page [][0m
+  [36m15[0m  [36m  [:div [:h2 "About frontend"][0m
+  [33m16[0m  [1m   [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])[0m
+  [0m  [0m  [33m                    ^--- Wrong number of args (2) passed to reitit.frontend.history/href[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m(defonce match (atom nil))[0m
+  [36m19[0m  [36m[0m
+  [36m20[0m  [36m(defn current-page [][0m
+  [36m21[0m  [36m  (if @match[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:35  column:18  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/start![0m
+
+  [36m31[0m  [36m      {:name ::about[0m
+  [36m32[0m  [36m       :view about-page}]]))[0m
+  [36m33[0m  [36m[0m
+  [36m34[0m  [36m(defn init! [][0m
+  [33m35[0m  [1m  (reset! router (rfh/start! routes (fn [m] (reset! match m))))[0m
+  [0m  [0m  [33m                 ^--- Wrong number of args (2) passed to reitit.frontend.history/start![0m
+  [36m36[0m  [36m  (r/render [current-page] (.getElementById js/document "app")))[0m
+  [36m37[0m  [36m[0m
+  [36m38[0m  [36m(init!)[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[32mSuccessfully compiled build :app to "target/cljsbuild/public/js/app.js" in 0.86 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/frontend/core.js
+Compiling build :app to "target/cljsbuild/public/js/app.js" from ["src"]...
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:12  column:21  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/href[0m
+
+  [36m 8[0m  [36m(def router (atom nil))[0m
+  [36m 9[0m  [36m[0m
+  [36m10[0m  [36m(defn home-page [][0m
+  [36m11[0m  [36m  [:div [:h2 "Welcome to frontend"][0m
+  [33m12[0m  [1m   [:div [:a {:href (rfh/href @router ::about)} "go to about page"]]])[0m
+  [0m  [0m  [33m                    ^--- Wrong number of args (2) passed to reitit.frontend.history/href[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn about-page [][0m
+  [36m15[0m  [36m  [:div [:h2 "About frontend"][0m
+  [36m16[0m  [36m   [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[36m----  Compiler Warning on   src/frontend/core.cljs   line:16  column:21  ----[0m
+
+  [1mWrong number of args (2) passed to reitit.frontend.history/href[0m
+
+  [36m12[0m  [36m   [:div [:a {:href (rfh/href @router ::about)} "go to about page"]]])[0m
+  [36m13[0m  [36m[0m
+  [36m14[0m  [36m(defn about-page [][0m
+  [36m15[0m  [36m  [:div [:h2 "About frontend"][0m
+  [33m16[0m  [1m   [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])[0m
+  [0m  [0m  [33m                    ^--- Wrong number of args (2) passed to reitit.frontend.history/href[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m(defonce match (atom nil))[0m
+  [36m19[0m  [36m[0m
+  [36m20[0m  [36m(defn current-page [][0m
+  [36m21[0m  [36m  (if @match[0m
+
+[36m----  Compiler Warning : Please see src/frontend/core.cljs  ----[0m
+[32mSuccessfully compiled build :app to "target/cljsbuild/public/js/app.js" in 0.579 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/frontend/core.js
+Compiling build :app to "target/cljsbuild/public/js/app.js" from ["src"]...
+[32mSuccessfully compiled build :app to "target/cljsbuild/public/js/app.js" in 2.096 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/goog/deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/cljs_deps.js
+notifying browser that file changed:  target/cljsbuild/public/js/out/frontend/core.js
+Compiling build :app to "target/cljsbuild/public/js/app.js" from ["src"]...
+[32mSuccessfully compiled build :app to "target/cljsbuild/public/js/app.js" in 0.939 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/frontend/core.js
+Compiling build :app to "target/cljsbuild/public/js/app.js" from ["src"]...
+[32mSuccessfully compiled build :app to "target/cljsbuild/public/js/app.js" in 0.899 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/frontend/core.js
+Compiling build :app to "target/cljsbuild/public/js/app.js" from ["src"]...
+[32mSuccessfully compiled build :app to "target/cljsbuild/public/js/app.js" in 0.918 seconds.[0m
+notifying browser that file changed:  target/cljsbuild/public/js/out/frontend/core.js
