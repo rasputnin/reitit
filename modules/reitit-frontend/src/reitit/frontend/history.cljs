@@ -11,36 +11,21 @@
 ;; Token is for Closure HtmlHistory
 ;; Path is for reitit
 
-(defn- path->path [path]
-  (if (= "/" path)
-    ""
-    path))
-
 (defn- token->path [history token]
-  (let [p (if (.-useFragment_ history)
-            token
-            (str "/" token))]
-    p))
+  (if (.-useFragment_ history)
+    token
+    (str (.getPathPrefix history) token)))
 
 (defn- path->token [history path]
-  (let [token (subs path (if (.-useFragment_ history)
-                           1
-                           (count (.getPathPrefix history))))
-        token (if (= "/" token)
-                ""
-                token)]
-    token))
+  (subs path (if (.-useFragment_ history)
+               1
+               (count (.getPathPrefix history)))))
 
 (defn- token->href [history token]
   (str (if (.-useFragment_ history)
-         (str "#" (.getPathPrefix history))
-         (.getPathPrefix history))
+         (str "#"))
+       (.getPathPrefix history)
        token))
-
-(defn- token->token [history token]
-  (if (.-useFragment_ history)
-    (str "/" token)
-    token))
 
 (def ^:private current-domain (.getDomain (.parse Uri js/location)))
 
@@ -60,7 +45,7 @@
                  (not (contains? #{"_blank" "self"} (.getAttribute el "target")))
                  ;; Left button
                  (= 0 (.-button e))
-                 (reitit/match-by-path router (token->path history (path->token history (.getPath uri)))))
+                 (reitit/match-by-path router (.getPath uri)))
           (.preventDefault e)
           (.replaceToken history (path->token history (.getPath uri)))))))
 
@@ -126,4 +111,4 @@
 (defn replace-token [{:keys [router history]} k params]
   (let [match (rf/match-by-name router k params)
         token (match->token history match k params)]
-    (.replaceToken history (token->token history token))))
+    (.replaceToken history token)))

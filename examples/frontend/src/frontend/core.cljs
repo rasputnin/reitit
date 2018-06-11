@@ -8,11 +8,14 @@
 (def router (atom nil))
 
 (defn home-page []
-  [:div [:h2 "Welcome to frontend"]
+  [:div
+   [:h2 "Welcome to frontend"]
    [:div [:a {:href (rfh/href @router ::about)} "go to about page"]]])
 
 (defn about-page []
-  [:div [:h2 "About frontend"]
+  [:div
+   [:h2 "About frontend"]
+   [:a {:href "http://google.com"} "external link"]
    [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])
 
 (defonce match (r/atom nil))
@@ -25,13 +28,17 @@
 
 (def routes
   (rc/router
-    ["/"
+    [""
      [""
-      {:name ::frontpage
+      {:name ::frontpage-root
        :view home-page}]
-     ["about"
-      {:name ::about
-       :view about-page}]]))
+     ["/"
+      [""
+       {:name ::frontpage
+        :view home-page}]
+      ["about"
+       {:name ::about
+        :view about-page}]]]))
 
 (defn init! []
   (reset! router (rfh/start! routes
