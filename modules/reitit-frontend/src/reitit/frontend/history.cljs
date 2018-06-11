@@ -6,26 +6,23 @@
             [goog.dom :as dom]
             [reitit.frontend :as rf])
   (:import goog.history.Html5History
-           goog.history.EventType
            goog.Uri))
 
 ;; Token is for Closure HtmlHistory
 ;; Path is for reitit
 
-(defn path->path [path]
+(defn- path->path [path]
   (if (= "/" path)
     ""
     path))
 
-(defn token->path [history token]
+(defn- token->path [history token]
   (let [p (if (.-useFragment_ history)
             token
             (str "/" token))]
-    (if (= "/" p)
-      ""
-      p)))
+    p))
 
-(defn path->token [history path]
+(defn- path->token [history path]
   (let [token (subs path (if (.-useFragment_ history)
                            1
                            (count (.getPathPrefix history))))
@@ -34,13 +31,13 @@
                 token)]
     token))
 
-(defn token->href [history token]
+(defn- token->href [history token]
   (str (if (.-useFragment_ history)
          (str "#" (.getPathPrefix history))
          (.getPathPrefix history))
        token))
 
-(defn token->token [history token]
+(defn- token->token [history token]
   (if (.-useFragment_ history)
     (str "/" token)
     token))
@@ -88,13 +85,13 @@
           (.setUseFragment use-fragment))
 
         event-key
-        (e/listen history EventType.NAVIGATE
+        (e/listen history goog.history.EventType.NAVIGATE
                   (fn [e]
                     (on-navigate (rf/match-by-path router (token->path history (.getToken history))))))
 
         click-listen-key
         (if-not use-fragment
-          (e/listen js/document EventType.CLICK
+          (e/listen js/document e/EventType.CLICK
                     (partial ignore-anchor-click router history)))]
 
     ;; Trigger navigate event for current route

@@ -15,12 +15,12 @@
   [:div [:h2 "About frontend"]
    [:div [:a {:href (rfh/href @router ::frontpage)} "go to the home page"]]])
 
-(defonce match (atom nil))
+(defonce match (r/atom nil))
 
 (defn current-page []
   [:div
    (if @match
-     [:div (:view (:data @match))])
+     [:div [(:view (:data @match))]])
    (pr-str @match)])
 
 (def routes
@@ -34,7 +34,10 @@
        :view about-page}]]))
 
 (defn init! []
-  (reset! router (rfh/start! routes (fn [m] (reset! match m)) {}))
+  (reset! router (rfh/start! routes
+                             (fn [m] (reset! match m))
+                             {:use-fragment true
+                              :path-prefix "/"}))
   (r/render [current-page] (.getElementById js/document "app")))
 
 (init!)

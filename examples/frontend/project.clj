@@ -25,6 +25,7 @@
    [{:id "app"
      :figwheel true
      :source-paths ["src"]
+     :watch-paths ["src" "checkouts/reitit-frontend/src"]
      :compiler {:main "frontend.core"
                 :asset-path "/js/out"
                 :output-to "target/cljsbuild/public/js/app.js"
