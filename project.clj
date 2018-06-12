@@ -17,15 +17,13 @@
                          [metosin/reitit-swagger "0.1.2"]
                          [metosin/reitit-swagger-ui "0.1.2"]
                          [metosin/reitit-frontend "0.1.2"]
-                         [metosin/reitit-re-frame "0.1.2"]
 
                          [meta-merge "1.0.0"]
                          [ring/ring-core "1.6.3"]
                          [metosin/spec-tools "0.7.0"]
                          [metosin/schema-tools "0.10.3"]
                          [metosin/ring-swagger-ui "2.2.10"]
-                         [metosin/jsonista "0.2.1"]
-                         [re-frame "0.10.2"]]
+                         [metosin/jsonista "0.2.1"]]
 
   :plugins [[jonase/eastwood "0.2.6"]
             [lein-doo "0.1.10"]
@@ -44,8 +42,7 @@
                                   "modules/reitit-schema/src"
                                   "modules/reitit-swagger/src"
                                   "modules/reitit-swagger-ui/src"
-                                  "modules/reitit-frontend/src"
-                                  "modules/reitit-re-frame/src"]
+                                  "modules/reitit-frontend/src"]
 
                    :dependencies [[org.clojure/clojure "1.9.0"]
                                   [org.clojure/clojurescript "1.10.238"]
