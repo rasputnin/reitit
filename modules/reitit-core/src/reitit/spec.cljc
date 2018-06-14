@@ -17,7 +17,7 @@
   (s/nilable
     (s/cat :path ::path
            :arg (s/? ::arg)
-           :childs (s/* (s/and (s/nilable ::raw-routes))))))
+           :childs (s/nilable (s/* (s/and ::raw-route))))))
 
 (s/def ::raw-routes
   (s/or :route ::raw-route
